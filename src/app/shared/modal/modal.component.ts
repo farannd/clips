@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { ModalService } from 'src/app/data/modal/modal.service';
 
 @Component({
@@ -8,11 +8,15 @@ import { ModalService } from 'src/app/data/modal/modal.service';
   // providers: [ModalService],
 })
 export class ModalComponent implements OnInit {
-  constructor(public modal: ModalService) {}
+  @Input() ModalId = '';
 
-  ngOnInit(): void {}
+  constructor(public modal: ModalService, public el: ElementRef) {}
+
+  ngOnInit(): void {
+    document.body.appendChild(this.el.nativeElement);
+  }
 
   closeModal() {
-    this.modal.toogleModal();
+    this.modal.toogleModal(this.ModalId);
   }
 }
