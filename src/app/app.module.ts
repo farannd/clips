@@ -8,11 +8,25 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
+import { HomeComponent } from './modules/home/home.component';
+import { AboutComponent } from './modules/about/about.component';
+import { VideoModule } from './modules/video/video.module';
+import { VideoRoutingModule } from './modules/video/video-routing.module';
+import { ClipComponent } from './modules/clip/clip.component';
+import { NotFoundComponent } from './modules/not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    HomeComponent,
+    AboutComponent,
+    ClipComponent,
+    NotFoundComponent,
+  ],
   imports: [
     BrowserModule,
+    VideoModule,
     AppRoutingModule,
     UserModule,
     AngularFireModule.initializeApp(environment.firebase),
